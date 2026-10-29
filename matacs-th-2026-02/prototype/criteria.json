@@ -1,0 +1,20 @@
+{
+  "category": "Commercial Solar Installation",
+  "version": 1,
+  "budget_ceiling_cad": 260000,
+  "max_weeks": 16,
+  "mandatory": [
+    {"id": "licence", "name": "Ontario electrical contractor licence held by bidder", "field": "licence_held_by_bidder"},
+    {"id": "wsib", "name": "WSIB clearance confirmed", "field": "wsib_clearance"},
+    {"id": "insurance", "name": "$5M liability insurance confirmed", "field": "insurance_5m"}
+  ],
+  "weighted": [
+    {"id": "experience", "name": "Relevant experience", "weight": 30, "method": "ratio_high", "field": "qualifying_installs"},
+    {"id": "price", "name": "Price", "weight": 25, "method": "ratio_low", "field": "price_cad", "must_be_at_most": "budget_ceiling_cad"},
+    {"id": "timeline", "name": "Timeline", "weight": 15, "method": "ratio_low", "field": "weeks", "must_be_at_most": "max_weeks"},
+    {"id": "warranty", "name": "Warranty", "weight": 15, "method": "composite_high",
+     "fields": {"panel_warranty_years": 0.5, "workmanship_warranty_years": 0.5}},
+    {"id": "team", "name": "Team and approach", "weight": 15, "method": "checklist",
+     "items": {"named_lead": 4, "crew_stated": 3, "safety_plan": 3, "monitoring_plan": 3, "extra_assurance": 2}}
+  ]
+}
